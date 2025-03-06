@@ -3,7 +3,8 @@ import pickle
 import numpy as np
 from PIL import Image
 import os
-
+import warnings
+warnings.simplefilter("ignore", category=UserWarning)
 # Load the model
 filename = 'pokemon_classifier_model.pkl'
 loaded_model = pickle.load(open(filename, 'rb'))
@@ -34,7 +35,7 @@ st.write("Upload an image to predict the Pokémon type.")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
     
     # Save to a temporary file for processing
     with open("temp_image.jpg", "wb") as f:
